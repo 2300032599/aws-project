@@ -11,7 +11,7 @@
 	<groupId>com.klef.fsd.springboot</groupId>
 	<artifactId>GlobalGo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>GlobalGo</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
