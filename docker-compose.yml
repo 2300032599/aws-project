@@ -10,13 +10,17 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql-data:/var/lib/mysql   # volume added here
+      - mysql-data:/var/lib/mysql
 
   backend:
     container_name: springboot
     build:
-      context: ./Backend/GlobalGo
+      context: ./GlobalGo/Backend/GlobalGo
       dockerfile: ./Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/globalgo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
     ports:
       - "2025:2000"
     depends_on:
@@ -26,7 +30,7 @@ services:
   frontend:
     container_name: react
     build:
-      context: ./Frontend
+      context: ./GlobalGo/Frontend
       dockerfile: ./Dockerfile
     ports:
       - "3000:80"
