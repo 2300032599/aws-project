@@ -5,8 +5,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: globalgo
-      # MYSQL_USER: klu
-      # MYSQL_PASSWORD: klu
     ports:
       - "3307:3306"
     volumes:
@@ -15,8 +13,8 @@ services:
   backend:
     container_name: springboot
     build:
-      context: ./GlobalGo/Backend/GlobalGo
-      dockerfile: ./Dockerfile
+      context: ./Backend/GlobalGo
+      dockerfile: Dockerfile
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/globalgo
       SPRING_DATASOURCE_USERNAME: root
@@ -30,13 +28,12 @@ services:
   frontend:
     container_name: react
     build:
-      context: ./GlobalGo/Frontend
-      dockerfile: ./Dockerfile
+      context: ./Frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:80"
     depends_on:
       - backend
 
-# Declare volumes at the bottom
 volumes:
   mysql-data:
